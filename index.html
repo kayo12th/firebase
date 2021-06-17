@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn" onclick="readTextFile()">Check File</button>
+    <div id="result"></div>
+    <script>
+      function readTextFile() {
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", "http://127.0.0.1:8887/abc.txt", true);
+        rawFile.onreadystatechange = function () {
+          if (rawFile.readyState === 4) {
+            var allText = rawFile.responseText;
+            document.getElementById("result").innerHTML = allText;
+          }
+        };
+        rawFile.send();
+      }
+    </script>
+  </body>
+</html>
